@@ -114,9 +114,36 @@ $(function(){
         else if (quantidade >= 100) {
             valor_total *= 0.95;
         }
-        console.log('parametros: ',parametros);
-        console.log('valor total: ',valor_total);
-        $('.refresh-loader').hide();
+
+        window.setTimeout(function() {
+
+            var id_gola = "#" + parametros.gola;
+            $('#result_gola').html( $(id_gola).html() );
+
+            var id_estampa = "option[value='" + parametros.estampa + "']";
+            $('#result_estampa').html( $(id_estampa).html());
+
+            var id_qualidade = "#" + parametros.qualidade;
+            $('#result_qualidade').html( $(id_qualidade).html() );
+
+            var id_cor = "#" + parametros.cor;
+            $('#result_cor').html( $(id_cor).html());
+
+            var id_embalagem = "option[value='" + parametros.embalagem + "']";
+            $('#result_embalagem').html( $(id_embalagem).html());
+
+            $('#result_quantidade').html( parametros.quantidade );
+
+            $('#valor-total').html(valor_total.toLocaleString('pt-BR',{ minimumFractionDigits: 2, maximumFractionDigits: 2} ) );
+
+            $('#foto-produto').attr("src",foto);
+
+
+
+            $('.refresh-loader').hide();
+        },1000)
+        
+       
        
     }
 
@@ -136,8 +163,8 @@ $(function(){
     });
 
     $('#quantidade').change(function() {
-        var parametros_input = $(this).attr('id');
-        parametros_pesquisa[parametros_input] = $(this).val();
+        var parametro_input = $(this).attr('id');
+        parametros_pesquisa[parametro_input] = $(this).val();
         atualizar_orcamento[parametros_pesquisa];
     })
 
