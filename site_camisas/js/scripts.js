@@ -129,6 +129,18 @@ $(function(){
         atualizar_orcamento(parametros_pesquisa);
     });
 
+    $("select").change(function() {
+        var parametros_select = $(this).attr('id');
+        parametros_pesquisa[parametros_select] = $(this).val();
+        atualizar_orcamento[parametros_pesquisa];
+    });
+
+    $('#quantidade').change(function() {
+        var parametros_input = $(this).attr('id');
+        parametros_pesquisa[parametros_input] = $(this).val();
+        atualizar_orcamento[parametros_pesquisa];
+    })
+
 
 
 
